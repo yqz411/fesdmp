@@ -1,10 +1,6 @@
 package cn.bjfu.fesdmp.web;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -22,7 +18,16 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "login";
+		return "/frame/login";
 	}
 	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index() {
+		return "/frame/index";
+	}
+	
+	@RequestMapping(value = "/top", method = RequestMethod.GET)
+	public String top() {
+		return "/frame/top";
+	}
 }
