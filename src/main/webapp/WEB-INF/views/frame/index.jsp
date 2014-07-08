@@ -24,14 +24,20 @@
 			Ext.MessageBox.confirm('退出确认', '确认退出并注销当前用户？', function(button) {
 				if ('yes' == button) {
   				Ext.Ajax.request({
-					url : Global_Path + '/smp/portal!userLogout',
+					url : Global_Path + 'logout',
 					method : 'post',
 					success : function(response, options) {
 						window.close();
 						location.href = Global_Path;
 					},
 					failure : function(response, options) {
-						alert('系统退出异常！');
+						Ext.MessageBox.show({
+					           title: 'Error',
+					           msg: '系统退出异常！',
+					           buttons: Ext.MessageBox.OK,
+					           animateTarget: 'mb9',
+					           icon: Ext.MessageBox.ERROR
+					       });
 					}
 				})				
 				}
@@ -153,9 +159,7 @@
 			        }
 			},'->',{
             	text : '退出系统',
-            	handler : function () {
-            		Ext.Msg.alert('tips', '退出系统');
-            	}
+            	handler : userLogout
             }]
 			
 		});

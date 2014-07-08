@@ -2,6 +2,8 @@ package cn.bjfu.fesdmp.web;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,10 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application home page.
+ * 
+ * ClassName: HomeController <br />
+ * Function: 处理系统的登陆，登出. <br />
+ * date: 2014年7月8日 下午9:18:36 <br />
+ * 
+ * @author zhangzhaoyu
+ * @version  1.0
+ * @since JDK 1.7
  */
 @Controller
-public class HomeController {
+public class HomeController extends BaseController {
 	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
@@ -21,9 +30,15 @@ public class HomeController {
 		return "/frame/login";
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String index() {
 		return "/frame/index";
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpSession session) {
+		super.detroySession(session);
+		return "/frame/login";
 	}
 	
 	@RequestMapping(value = "/top", method = RequestMethod.GET)
