@@ -16,9 +16,7 @@
     http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components-->
-	<context:component-scan base-package="cn.bjfu.springdao.jpa.dao.impl" />
-	<context:component-scan base-package="cn.bjfu.springdao.jpa.service.impl" />
-	<context:component-scan base-package="cn.bjfu.springdao.jms.service.impl" />
+	<context:component-scan base-package="cn.bjfu.fesdmp.sys.dao.impl" />
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<!-- 定义数据源Bean -->
@@ -62,7 +60,13 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">   
         <property name="dataSource" ref="dataSource"/>  
         <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>  
-        <property name="packagesToScan" value="cn.bjfu.springdao.jpa.domain"/><!--待扫描的实体类包，不再需要persistence.xml了-->  
+        <!--待扫描的实体类包，不再需要persistence.xml了-->
+        <property name="packagesToScan" >
+        	<list>
+        		<value>cn.bjfu.fesdmp.domain.sys</value>
+        	</list>
+        </property>
+          
         <property name="jpaProperties">  
             <props>  
                 <prop key="hibernate.show_sql">true</prop>
