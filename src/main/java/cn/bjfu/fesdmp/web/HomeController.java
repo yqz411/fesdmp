@@ -1,4 +1,4 @@
-package cn.bjfu.fesdmp;
+package cn.bjfu.fesdmp.web;
 
 import java.text.DateFormat;
 import java.util.Date;
