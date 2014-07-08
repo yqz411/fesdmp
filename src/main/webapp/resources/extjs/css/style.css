@@ -1,0 +1,279 @@
+/* CSS Document */
+
+.smp_indexbody{
+	margin:0px;
+	
+	}
+.smp_loginbody{
+	margin:0px;
+	background-color: #157FCC;
+	font-family: "å®‹ä½“";
+	font-size: 13px;
+	color: #FFF;
+	text-decoration: none;
+	line-height: 18px;
+	}
+.smp_toptable{
+	background-color: #157FCC;
+	height: 70px;
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	font-weight: bolder;
+	color: #FFF;
+}
+.smp_toptime{
+	background-attachment: scroll;
+	background: url(../images/smptimebg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.smp_logintable{
+	background-attachment: scroll;
+	background: url(../images/smplogin_divbg.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 409px;
+	width: 814px;
+	margin-top:180px;
+}
+.spm_logincopyright{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;
+}
+.spm_logintitle{
+	font-family: "å®‹ä½“";
+	font-size: 14px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.spm_loginuersinput{
+	
+	background-attachment: scroll;
+	background: #FFF url(../images/smplogin_uers.png);
+	background-repeat: no-repeat;
+	background-position: 6px 12px;
+	height: 38px;
+	width: 247px;
+	border: 1px solid #FFF;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: #666 0px 0px 6px;
+    -moz-box-shadow: #666 0px 0px 6px;
+    box-shadow: #666 0px 0px 6px;
+	behavior: url(/PIE.htc);
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	line-height: 40px;
+	color: #147FCC;
+	text-decoration: none;
+	text-indent:28px
+}
+
+.spm_loginpwinput{
+	background-attachment: scroll;
+	background: #FFF url(../images/smplogin_key.png);
+	background-repeat: no-repeat;
+	background-position: 6px 12px;
+	height: 38px;
+	width: 247px;
+	border: 1px solid #FFF;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: #666 0px 0px 6px;
+	-moz-box-shadow: #666 0px 0px 6px;
+	box-shadow: #666 0px 0px 6px;
+	behavior: url(/PIE.htc);
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	line-height: 40px;
+	color: #147FCC;
+	text-decoration: none;
+	background-color: #FFF;
+	text-indent:28px
+	
+	}
+	
+	.spm_loginbutton{
+	background-attachment: scroll;
+	background: url(../images/smplogin_button.png);
+	background-repeat: no-repeat;
+	background-position: 6px 12px;
+	height: 38px;
+	width: 247px;
+	border: 1px solid #FFF;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: #666 0px 0px 6px;
+	-moz-box-shadow: #666 0px 0px 6px;
+	box-shadow: #666 0px 0px 6px;
+	behavior: url(/PIE.htc);
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	line-height: 40px;
+	color: #147FCC;
+	text-decoration: none;
+	background-color: #FFF;
+	text-indent:28px
+	
+	}
+
+ A.logindownload:link{
+	font-family:  "å®‹ä½“";
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: underline;
+}
+A.logindownload:visited{
+	font-family: "å®‹ä½“";
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: underline;
+}
+A.logindownload:hover{
+	font-family: "å®‹ä½“";
+	font-size: 13px;
+	font-weight: bold;
+	color: #FF6;
+	text-decoration: underline;
+	}
+A.logindownload:active{
+	font-family: "å®‹ä½“";
+	font-size: 13px;
+	font-weight: bold;
+	color: #FF6;
+	text-decoration: underline;
+	
+	}
+	
+	
+	
+	
+A.settext:link{
+	font-family:  "å®‹ä½“";
+	font-size: 12px;
+	color: #FFF;
+	text-decoration: underline;
+	line-height: 18px;
+}
+A.settext:visited{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #FFF;
+	text-decoration: underline;
+	line-height: 18px;
+}
+A.settext:hover{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #FF6;
+	text-decoration: underline;
+	line-height: 18px;
+	}
+A.settext:active{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #FF6;
+	text-decoration: underline;
+	line-height: 18px;
+	
+	}
+.navset_tr{
+	background-color: #3892D3;
+}
+.navset_tr1{
+	background-color: #3BACF3;
+}
+.navset_table{
+	border: 1px solid #E3E3E3;
+	font-family: "å®‹ä½“";
+	font-size: 14px;
+	line-height: 18px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bolder;
+}
+	
+.myworkbody{
+}
+.myworkpanel{
+	background-color: #B5E0FB;
+}
+
+.myworkpaneltitle{
+	font-family: "ËÎÌå";
+	font-size: 14px;
+	color: #FFF;
+	text-decoration: none;
+	line-height: 30px;
+	height: 30px;
+	background-color: #3BACF3;
+	font-weight: bold;
+	text-indent: 10px;
+}
+
+.myworklayout{
+	margin-top: 10px;
+}	
+.myworkmsgpanel{
+	background-color: #FFF;
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;
+	-webkit-box-shadow: #666 0px 0px 6px;
+	-moz-box-shadow: #666 0px 0px 6px;
+	box-shadow: #666 0px 0px 6px;
+	behavior: url(/PIE.htc);
+}
+.myworktexttitle	{
+	color: #666;
+	font-family: "ËÎÌå";
+	font-size: 14px;
+	font-weight: bolder;
+	line-height: 32px;
+	text-decoration: none;
+}
+.myworknumb	{
+	color: #F60;
+}
+	
+A.myworktext:link{
+	font-family:  "ËÎÌå";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;	
+	
+}
+A.myworktext:visited{
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;	
+}
+A.myworktext:hover{
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;	
+	}
+A.myworktext:active{
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;	
+	
+	}	
+		
+	
+	
+	
+	

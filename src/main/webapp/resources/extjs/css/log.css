@@ -1,0 +1,38 @@
+.logsearch {
+    background-image: url( ../images/search.png ) !important;
+    background-position: 10px 10px;
+}
+
+.logreference{
+   background-image: url( ../images/refrence.png ) !important;
+   background-position: 10px 10px;
+}
+
+
+.logupdate{
+   background-image: url( ../images/update.png ) !important;
+   background-position: 10px 10px;
+}
+
+
+.logsearch {
+    background-image: url( ../images/search.png ) !important;
+    background-position: 10px 10px;
+}
+
+
+.logsave{
+   background-image: url( ../images/save.png ) !important;
+   background-position: 10px 10px;
+}
+
+.logcancle{
+   background-image: url( ../images/cancellation.png ) !important;
+   background-position: 10px 10px;
+}
+
+
+.alarmcheck{
+   background-image: url( ../images/check.png ) !important;
+   background-position: 10px 10px;
+}

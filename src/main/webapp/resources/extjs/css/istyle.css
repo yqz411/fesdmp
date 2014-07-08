@@ -1,0 +1,101 @@
+/* CSS Document */
+
+.loginbody{
+	background-color: #157FCD;
+}
+.logintable{
+	height: 340px;
+	width: 708px;
+	margin-top: 200px;
+	border: 1px solid #FFF;
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #000;
+	text-decoration: none;
+}
+.logintdbg{
+	background-attachment: scroll;
+	background: url(../images/tdbg.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.logininput{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #000;
+	text-decoration: none;
+	margin: 2px;
+	padding: 2px;
+	height: 20px;
+	width: 200px;
+	border: 1px solid #999999;
+}
+
+
+.loginbutton{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #FFF;
+	text-decoration: none;
+	background-color: #157FCD;
+	padding: 2px;
+	height: 22px;
+	width: 60px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.loginbutton:hover{
+	
+	background-color: #99CDF4;
+	
+
+}
+
+.spm_logincopyright{
+	font-family: "å®‹ä½“";
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;
+}
+.spm_logintitle{
+	font-family: "å®‹ä½“";
+	font-size: 14px;
+	color: #FF6600;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.logininput{
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #000;
+	text-decoration: none;
+	margin: 0px;
+	padding-left: 32px;
+	height: 26px;
+	width: 200px;
+	border: 1px solid #999999;
+	background-repeat: no-repeat;
+	background-position: 6px 2px;
+	background-attachment: scroll;
+	background-image: url(../images/logininputuers2.png);
+}
+ 
+.logininput1{
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	color: #000;
+	text-decoration: none;
+	margin: 0px;
+	padding-left: 32px;
+	height: 26px;
+	width: 200px;
+	border: 1px solid #999999;
+	background-repeat: no-repeat;
+	background-position: 6px 2px;
+	background-attachment: scroll;
+	background-image: url(../images/logininputkey2.png);
+}

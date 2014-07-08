@@ -1,0 +1,168 @@
+/*!
+ * Ext JS Library 3.0.0
+ * Copyright(c) 2006-2009 Ext JS, LLC
+ * licensing@extjs.com
+ * http://www.extjs.com/license
+ */
+.add {
+	background-image: url(../images/add.png) !important;
+}
+.add16 {
+    background-image: url(../images/icons/images/add16.gif) !important;
+}
+.addpassword {
+    background-image: url(../images/add.png) !important;
+    background-position : 0 center;
+    background-repeat : no-repeat;
+}
+.addTrigger {
+    background-image: url(../images/add2.png) !important;
+}
+.delTrigger {
+    background-image: url(../images/del2.png) !important;
+}
+.remove {
+	background-image: url(../images/icons/fam/delete.gif) !important;
+}
+.del {
+	background-image: url(../images/delete.png) !important;
+}
+.reference {
+	background-image: url(../images/refrence2.png) !important;
+}
+.help1 {
+	background-image: url(../images/icons/help2.png) !important;
+}
+.policyList {
+    /*background-image: url(../images/icons/sysmanagment.png) !important;*/
+    background-image: url(../images/icons/reference.png) !important;
+}
+.icon-error {
+    background-image: url(../images/icons/fam/cross.gif) !important;
+	height : 16px;
+	width : 16px;
+}
+.icon-grid { 
+    background-image: url(../images/icons/images/hmenu-asc.gif) !important;
+}
+.icon-sysmanagment { 
+    /* background-image: url(../images/icons/sysmanagment.png) !important; */
+    background-image: url(../images/icons/reference.png) !important;
+}
+.btn-panel td {
+    padding-left:5px;
+}
+/* 设置修改样式图标	2010-3-18	张学东 */
+.icon-update{
+	background-image: url(../images/update.png) !important;
+}
+/* 设置在线用户样式图标	2010-3-18	张学东 */
+.icon-user-online{
+	background-image: url(../images/icons/fam/user.png) !important;
+}
+/* 导入导出 */
+.imp_exp {
+	background-image: url(../images/icons/fam/imp_exp.png) !important;
+}
+/* 导入资源 */
+.imp_resource {
+    background-image: url(../images/icons/fam/imp_resource.png) !important;
+}
+/* 导出模板 */
+.exp_template {
+    background-image: url(../images/icons/fam/exp_template.png) !important;
+}
+/* 导出设备 */
+.exp_resource {
+    background-image: url(../images/icons/fam/exp_resource.png) !important;
+}
+/* 用户加锁 */
+.hmenu_lock {
+	background-image: url(../images/default/grid/hmenu-lock.png) !important;
+}
+/* 用户解锁 */
+.hmenu_unlock {
+	background-image: url(../images/default/grid/hmenu-unlock.png) !important;
+}
+/* 采集 */
+.gather {
+    background-image: url(../images/icons/fam/gather.png) !important;
+}
+/* 批量授权 */
+.batch_auth {
+    background-image: url(../images/icons/fam/batch_auth.png) !important;
+}
+/* 从IP */
+.add_acc_ip {
+    background-image: url(../images/icons/fam/add_green.png) !important;
+}
+/* 开启 */
+.btn_open {
+    background-image: url(../images/icons/fam/greenkey.png) !important;
+}
+/* 关闭 */
+.btn_close {
+    background-image: url(../images/icons/fam/redkey.png) !important;
+}
+/* 配置 */
+.btn_conf{
+	background-image: url(../images/icons/fam/cog.png) !important;
+}
+h2 {
+    color:#083772 !important;
+    margin: 20px 0 0 !important;
+    padding: 5px;
+    background:#eee;
+    width:400px;
+}
+
+h3 {
+    font-weight:normal !important;
+}
+.search {
+	height: 16px;
+    width: 16px;
+	background-image: url(../images/ismp_search.png) !important;
+}
+
+
+.grid-record-red {   
+    background-color: #FF0000;   /*修改背景颜色 高*/
+}
+
+.grid-record-crimson {
+    background-color: #DC143C;   /*修改背景颜色 非常高*/
+}
+
+.grid-record-deeppink  {   
+    background-color: #FF1493;   /*修改背景颜色 中*/
+}
+
+.grid-record-lime  {   
+    background-color: #00FF00;   /*修改背景颜色  低*/
+}
+
+.grid-record-aquamarine  {   
+    background-color: #7FFFD4;   /*修改背景颜色   一般*/
+}
+
+.devBusy {
+	height: 16px;
+    width: 16px;
+	background-image: url(../images/ismp_busy.png) !important;
+}
+.devlinked {
+	height: 16px;
+    width: 16px;
+	background-image: url(../images/ismp_linked.png) !important;
+}
+.devDisconnect {
+	height: 16px;
+    width: 16px;
+	background-image: url(../images/ismp_disconnect.png) !important;
+}
+.dvp-tree-node-disabled .x-grid-cell {
+   -moz-opacity: 0.5;
+   opacity:.5;
+   filter: alpha(opacity=50);
+}

@@ -1,0 +1,385 @@
+/* CSS Document */
+
+.test1111{
+font-family: sans-serif;
+	font-size: 12px;
+	color: #818181;
+	text-decoration: none;
+} 
+.menutext{
+	font-family: sans-serif;
+	font-size: 14px;
+	line-height: 32px;
+	font-weight: bolder;
+	color: #FFF;
+	text-decoration: none;
+}
+.ismp_toptable{
+	background-attachment: scroll;
+	background-image: url(../images/topbg.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.ismp_msgtable{
+	border: 1px solid #CCCCCC;
+	font-family: sans-serif;
+	font-size: 12px;
+	color:#2090D2;
+	text-decoration: none;
+	margin-right: 22px;
+	height: 22px;
+	line-height:20px;
+	padding: 2px;
+}
+.ismp_indexbody{
+	margin: 0px;
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #818181;
+	text-decoration: none;
+	line-height: 24px;
+	}
+.ismp_alltext{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #818181;
+	text-decoration: none;
+	line-height: 24px;
+	}
+
+.ism_linebg{
+	background-attachment: scroll;
+	background: url(../images/linedot.png);
+	background-repeat: repeat-x;
+	background-position: left center;
+	height: 3px;
+}
+.ismp_middleline{
+	background-attachment: scroll;
+	background-image: url(../images/middleline.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+a:hover{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #F90;	
+	}
+.titlename{
+	color: #06F;
+	font-family: sans-serif;
+	font-size: 14px;
+	line-height: 30px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.searchtimetext{
+	color: #818181;
+	font-family: sans-serif;
+	font-size: 13px;
+	line-height: 30px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.listtitiletext{
+	color: #06F;
+	font-family: sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+.button_up{
+	font-family: sans-serif;
+	font-size: 11px;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	color: #FFF;
+	background-attachment: scroll;
+	background-color: #FF6600;
+	background-image: url(../images/arrow_up.png);
+	background-repeat: no-repeat;
+	background-position: 4px 2px;
+	height: 18px;
+	text-indent: 14px;
+	line-height: 14px;
+	margin-right: 6px;
+	margin-left: 6px;
+	
+	-moz-border-radiust: 6px;
+	-khtml-border-radius: 6px;
+	
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	
+	border: 1px solid #ff6600;
+}
+.button_down{
+	font-family: sans-serif;
+	font-size: 11px;
+	color: #FFF;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	background-attachment: scroll;
+	background-color: #008C00;
+	background-image: url(../images/arrow_down.png);
+	background-repeat: no-repeat;
+	background-position: 4px 2px;
+	height: 18px;
+	text-indent: 14px;
+	line-height: 14px;
+	margin-right: 6px;
+	margin-left: 6px;
+	-moz-border-radiust: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #008C00;
+	}
+	
+.button_new{
+	font-family: sans-serif;
+	font-size: 11px;
+	color: #FFF;
+	height: 18px;
+	line-height: 14px;
+	margin-right: 6px;
+	margin-left: 6px;
+	-moz-border-radiust: 6px;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #FFA64d;
+	background-color: #FFA64D;
+	}
+.button_workflowing{ 
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	background-color:#999999;
+	height: 18px;
+	line-height: 14px;
+	margin-right: 6px;
+	margin-left: 6px;
+	-moz-border-radiust: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #999;
+	}
+.button_timefirst{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #06F;
+	height: 24px;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	line-height: 18px;
+	margin-right: 0px;
+	margin-left: 0px;
+	border: 1px solid #06F;
+	padding: 2px;
+	width: 40px;
+	 -moz-border-top-left-radius: 9px; 
+	 -moz-border-top-right-radius: 0px;
+	 -moz-border-bottom-right-radius: 9px;
+	 -moz-border-top-right-radius: 0px;
+	 
+     -webkit-border-top-left-radius: 9px; 
+	 -webkit-border-top-right-radius: 0px;
+	 -webkit-border-bottom-right-radius: 0px;
+	 -webkit-border-bottom-left-radius: 9px;
+ 
+	 border-top-left-radius:9px;
+     border-top-right-radius:0px;
+     border-bottom-right-radius:0px;
+     border-bottom-left-radius:9px;
+	}
+.button_timefirst:hover{
+	background-color:#7396FF;	
+	
+	}
+.button_time{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #06F;
+	height: 24px;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	line-height: 18px;
+	margin-right: 1px;
+	margin-left: 1px;
+	border: 1px solid #06F;
+	padding: 2px;
+	width: 40px;
+	}
+.button_time:hover{
+	background-color: #7396FF;	
+	
+	}
+.button_timeend{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #06F;
+	height: 24px;
+	cursor:pointer;
+	cursor:hand !important;
+	cursor:hand;
+	line-height: 18px;
+	margin-right: 0px;
+	margin-left: 0px;
+	border: 1px solid #06F;
+	padding: 2px;
+	width: 40px;
+	border: 1px solid #06F;
+	 -moz-border-top-left-radius: 0px; 
+	 -moz-border-top-right-radius:9px;
+	 -moz-border-bottom-right-radius: 9px;
+	 -moz-border-top-right-radius: 0px;
+	 
+     -webkit-border-top-left-radius: 0px; 
+	 -webkit-border-top-right-radius: 9px;
+	 -webkit-border-bottom-right-radius: 9px;
+	 -webkit-border-bottom-left-radius: 0px;
+ 
+	 border-top-left-radius:0px;
+     border-top-right-radius:9px;
+     border-bottom-right-radius:9px;
+     border-bottom-left-radius:0px;
+	
+	}
+.button_timeend:hover{
+	background-color: #7396FF;	
+	
+	}
+.button_jump{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #06F;
+	height: 26px;
+	line-height: 19px;
+	margin-right: 12px;
+	margin-left: 4px;
+	border: 1px solid #06F;
+	padding: 2px;
+	width: 90px;
+	}
+.button_jump:hover{
+	background-color: #7396FF;	
+	
+	}
+.mapbg{
+	background-attachment: scroll;
+	background-image: url(../images/map1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 430px;
+	width: 449px;
+}
+.actuarytable{
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #818181;
+	text-decoration: none;
+	line-height: 24px;
+	border: 0px none #DDDDDD;
+	position: static;
+	background-color: #DDDDDD;
+	margin-bottom: 4px;
+}
+.actuarytitletd{
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #06F;
+
+}
+.totaltext{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 66px;
+	font-weight: bold;
+	color: #E54B65;
+	text-decoration: none;
+
+}
+.sub{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+}
+
+
+.map_yanqing{
+	width:30px;
+	height:30px;
+	left: 160px;
+	top: 130px;
+	overflow: visible;
+	position: relative;
+}
+.map_huairou{
+	width:30px;
+	height:30px;
+	left: 240px;
+	top: 120px;
+	overflow: visible;
+	position: relative;
+}
+.map_miyun{
+	width:30px;
+	height:30px;
+	left: 300px;
+	top: 80px;
+	overflow: visible;
+	position: relative;
+
+}
+.map_changping{
+	width:30px;
+	height:30px;
+	left: 400px;
+	top: 240px;
+	overflow: visible;
+	position: relative;
+}
+.map_shunyi{
+	width:30px;
+	height:30px;
+	left: 266px;
+	top: 122px;
+	overflow: visible;
+	position: relative;
+}
+.map_changping{
+	width: 30px;
+	height: 30px;
+	left: 166px;
+	top: 80px;
+	overflow: visible;
+	position: relative;
+}
+.map_fangshan{
+	width: 30px;
+	height: 30px;
+	left: 70px;
+	top: 160px;
+	overflow: visible;
+	position: relative;
+}
