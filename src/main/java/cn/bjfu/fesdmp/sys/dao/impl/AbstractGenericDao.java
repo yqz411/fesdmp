@@ -9,9 +9,6 @@
   
 package cn.bjfu.fesdmp.sys.dao.impl;  
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -192,6 +189,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	 * 枚举类型取值为 AND 或者 OR
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	protected String convertBeanToJPAL(Object bean, JoinMode joinMode) {
 		Class clazz = bean.getClass();
 		Field[] fields = clazz.getDeclaredFields();
