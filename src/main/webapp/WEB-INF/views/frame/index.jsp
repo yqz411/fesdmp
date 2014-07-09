@@ -57,6 +57,14 @@
 		   Ext.MessageBox.alert('提示', msg);
 		}; --%>
 		
+		function loadUrls(){
+       		centers.getLoader().load(Ext.create('Ext.ComponentLoader',{
+           	  	url : Global_Path + "statistic/portal",
+           	    scripts : true,                             
+           	    nocache : true                            
+            }));
+	  	}
+		
 		Ext.create('Ext.util.KeyMap',{
 			target: Ext.getBody(),
 		    binding: [{
@@ -139,7 +147,7 @@
 			                    text: '日志管理',
 								handler : function() {
 									Ext.getCmp('centerPanel').getLoader().load({
-					    				url: Global_Path + "logmanagement",
+					    				url: Global_Path + "syslog/listView",
 				                	 	scripts : true,
 				                	 	loadMask : true,
 				                	 	noCache : true	
@@ -181,10 +189,10 @@
            })],
            listeners : {
            	'expand' : function(p,opt){
-           		//loadUrls();
+           		loadUrls();
            	},
            	'collapse' : function(p,eOpts){
-           		//loadUrls();
+           		loadUrls();
            	}
            }
 		});

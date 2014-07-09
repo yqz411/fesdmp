@@ -33,11 +33,11 @@ import cn.bjfu.fesdmp.domain.sys.User;
 
 /** 
  * ClassName:BaseController <br/> 
- * Function: TODO ADD FUNCTION. <br/> 
- * Reason:   TODO ADD REASON. <br/> 
+ * Function: BaseController 提供返回值的基础控制器，包括返回值的国际化. <br/> 
+ * Reason:   BaseController. <br/> 
  * Date:     2014年7月8日 上午9:52:57 <br/> 
  * @author   zhangzhaoyu 
- * @version   
+ * @version   1.0
  * @since    JDK 1.7 
  * @see       
  */

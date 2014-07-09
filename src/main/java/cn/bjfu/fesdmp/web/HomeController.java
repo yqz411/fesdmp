@@ -27,22 +27,22 @@ public class HomeController extends BaseController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "/frame/login";
+		return "frame/login";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String index() {
-		return "/frame/index";
+		return "frame/index";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session) {
 		super.detroySession(session);
-		return "/frame/login";
+		return "frame/login";
 	}
 	
 	@RequestMapping(value = "/top", method = RequestMethod.GET)
 	public String top() {
-		return "/frame/top";
+		return "frame/top";
 	}
 }

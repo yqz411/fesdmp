@@ -42,11 +42,10 @@ import cn.bjfu.fesdmp.domain.enums.OperationType;
 @Entity
 @Table(name = "t_system_log")
 public class SystemLog implements Serializable {
-
 	/**
 	 * @since JDK 1.7
 	 */
-	private static final long serialVersionUID = -3583921713865091735L;
+	private static final long serialVersionUID = -5775398235838427582L;
 	
 	@Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
