@@ -5,10 +5,10 @@ Ext.define('Bjfu.log.model.log',{
     	type : 'int' //日志编号
     },{
     	name : 'businessType',   					
-    	type : 'int' //业务类型
+    	type : 'string' //业务类型
     },{
-    	name : 'operateType',   					
-    	type : 'int' //操作类型
+    	name : 'operationType',   					
+    	type : 'string' //操作类型
     },{
     	name : 'userName',   					
     	type : 'string' //用户名

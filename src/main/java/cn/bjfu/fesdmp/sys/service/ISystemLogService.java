@@ -13,6 +13,7 @@ import java.util.List;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
 import cn.bjfu.fesdmp.frame.IOrder;
+import cn.bjfu.fesdmp.frame.JoinMode;
 import cn.bjfu.fesdmp.utils.Pagination;
 
 /** 
@@ -31,6 +32,6 @@ public interface ISystemLogService {
 	public abstract void deleteSysLog(SystemLog systemLog);
 	public abstract List<SystemLog> queryAll();
 	public abstract void queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page);
-	
+	public abstract List<SystemLog> findByCondition(final Object condition, IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
 }
  

@@ -12,6 +12,7 @@ package cn.bjfu.fesdmp.sys.service;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cn.bjfu.fesdmp.domain.enums.BusinessType;
 import cn.bjfu.fesdmp.domain.enums.OperationType;
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
+import cn.bjfu.fesdmp.frame.IOrder;
+import cn.bjfu.fesdmp.frame.JoinMode;
+import cn.bjfu.fesdmp.frame.Order;
+import cn.bjfu.fesdmp.utils.Pagination;
 
 /** 
  * ClassName:SystemLogServiceTests <br/> 
@@ -39,7 +44,7 @@ public class SystemLogServiceTests {
 	@Autowired
 	private ISystemLogService systemLogService;
 	
-	@Test
+	@Ignore
 	public void test() {
 		SystemLog log = new SystemLog();
 		log.setBusinessType(BusinessType.SYS_LOGIN);
@@ -55,5 +60,18 @@ public class SystemLogServiceTests {
 		System.out.println(list);
 	}
 	
+	@Test
+	public void testFind() {
+		IOrder order = new Order();
+		order.addOrderBy("operateTime", "DESC");
+		SystemLog log = new SystemLog();
+		log.setUserName("zhang");
+		log.setId(1L);
+		
+		Pagination<SystemLog> pagination = new Pagination<SystemLog>();
+		
+		List list = this.systemLogService.findByCondition(null, null, null, null);
+		System.out.println(list);
+	}
 }
  

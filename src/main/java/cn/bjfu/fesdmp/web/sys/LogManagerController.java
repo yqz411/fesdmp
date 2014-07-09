@@ -13,11 +13,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.bjfu.fesdmp.domain.sys.SystemLog;
+import cn.bjfu.fesdmp.frame.IOrder;
+import cn.bjfu.fesdmp.frame.Order;
+import cn.bjfu.fesdmp.sys.service.ISystemLogService;
+import cn.bjfu.fesdmp.utils.PageInfoBean;
+import cn.bjfu.fesdmp.utils.Pagination;
 import cn.bjfu.fesdmp.web.BaseController;
 
 /** 
@@ -35,6 +42,9 @@ import cn.bjfu.fesdmp.web.BaseController;
 public class LogManagerController extends BaseController {
 	private static final Logger logger = Logger.getLogger(LogManagerController.class);
 	
+	@Autowired
+	private ISystemLogService systemLogService;
+	
 	@RequestMapping(value = "/listView", method = RequestMethod.GET)
 	public String syslogPage() {
 		logger.info("syslogPage method.");
@@ -43,10 +53,24 @@ public class LogManagerController extends BaseController {
 	
 	@RequestMapping(value = "/systemlogList", method = RequestMethod.POST)
 	@ResponseBody
-	public String systemlogList(String searchJson) {
+	public Map<String, Object> systemlogList(PageInfoBean pageInfo) {
+		
+		logger.info("systemlogList method.");
+		
+		Pagination<SystemLog> page = new Pagination<SystemLog>();
+		page.setPageSize(pageInfo.getLimit());
+		page.setCurrentPage(pageInfo.getPage());
+		
+		IOrder order = new Order();
+		order.addOrderBy("operateTime", "DESC");
+		this.systemLogService.queryByCondition(null, order, page);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		return "";
+		result.put("pageCount", page.getTotalRecord());
+		result.put("result", page.getDatas());
+		
+		return result;
 	}
+	
 }
  

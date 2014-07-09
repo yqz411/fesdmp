@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
 import cn.bjfu.fesdmp.frame.IOrder;
+import cn.bjfu.fesdmp.frame.JoinMode;
 import cn.bjfu.fesdmp.sys.dao.ISystemLogDao;
 import cn.bjfu.fesdmp.sys.service.ISystemLogService;
 import cn.bjfu.fesdmp.utils.Pagination;
@@ -59,6 +60,13 @@ public class SystemLogService implements ISystemLogService {
 	public void queryByCondition(Object condition, IOrder order,
 			Pagination<SystemLog> page) {
 		this.systemLogDao.findByCondition(condition, order, page);
+	}
+	
+	@Transactional(readOnly = true)
+	@Override
+	public List<SystemLog> findByCondition(Object condition, IOrder order,
+			Pagination<SystemLog> page, JoinMode joinMode) {
+		return this.systemLogDao.findByCondition(condition, order, page, joinMode);
 	}
 
 }

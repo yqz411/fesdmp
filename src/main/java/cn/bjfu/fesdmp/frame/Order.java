@@ -42,7 +42,7 @@ public class Order implements IOrder {
 
 	@Override
 	public String convertToSQL() {
-		StringBuilder builder = new StringBuilder("ORDER BY ");
+		StringBuilder builder = new StringBuilder(" ORDER BY ");
 		Set<String> set = map.keySet();
 		int size = set.size();
 		if (size == 1) {

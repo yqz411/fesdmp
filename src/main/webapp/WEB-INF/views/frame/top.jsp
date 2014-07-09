@@ -31,7 +31,7 @@
     <td width="20">&nbsp;</td>
     <td width="617"><img src="<%=request.getContextPath() %>/resources/extjs/images/smplogo.png" width="617" height="70" /></td>
     <td>&nbsp;</td>
-    <td width="320" align="center" nowrap="nowrap" class="topUserName"><img style="vertical-align: middle;" width="12px;" height="12px;" src="<%=request.getContextPath() %>/resources/extjs/images/uers.png"/>
+    <td width="410" align="center" class="smp_toptime"><img style="vertical-align: middle;" width="12px;" height="12px;" src="<%=request.getContextPath() %>/resources/extjs/images/uers.png"/>
     <span style="font-size:14px;">&nbsp;bocoadmin&nbsp;2014-07-07</span></td>
   </tr>
 </table>

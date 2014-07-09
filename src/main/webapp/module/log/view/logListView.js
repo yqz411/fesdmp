@@ -29,9 +29,9 @@ Ext.define('Bjfu.log.view.logListView',{
 	                destroy: 'POST'
 				},
 				extraParams: {  
-	                warningStr : '{ismpewStatus : 1}'
+	                searchJson : '{ismpewStatus : 1}'
 	            },  
-				url : Global_Path+'/syslog/systemlogList',
+				url : Global_Path+'syslog/systemlogList',
 				reader : {
 					type : 'json',
 					root : 'result',
@@ -69,20 +69,18 @@ Ext.define('Bjfu.log.view.logListView',{
 			    }), 
 			    {
 			        text : '业务类型',
-			        dataIndex : 'businessType',
-			        hidden:true
+			        dataIndex : 'businessType'
 			    },{
 			        text : '业务类型',
 			        dataIndex : 'businessTypeName',
-			        width : '10%'
-			    },{
-			        text : '操作类型',
-			        dataIndex : 'operateType',
 			        hidden:true
 			    },{
 			        text : '操作类型',
+			        dataIndex : 'operationType'
+			    },{
+			        text : '操作类型',
 			        dataIndex : 'operateTypeName',
-			        width : '10%'
+			        hidden:true
 			    } ,{
 			        text : '用户名',
 			        dataIndex : 'userName',

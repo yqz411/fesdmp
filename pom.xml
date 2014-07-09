@@ -12,7 +12,7 @@
 		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.1</org.slf4j-version>
-		<jackson-version>1.9.0</jackson-version>
+		<jackson-version>1.9.13</jackson-version>
 		<hibernate-version>4.3.5.Final</hibernate-version>
 		<querydsl.version>2.9.0</querydsl.version>
 		<activemq-version>5.7.0</activemq-version>
