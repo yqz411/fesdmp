@@ -25,7 +25,7 @@ import cn.bjfu.fesdmp.sys.dao.ISystemLogDao;
  * @see       
  */
 @Repository
-public class SystemLogDaoImpl extends AbstractGenericDao<SystemLog> implements ISystemLogDao<SystemLog> {
+public class SystemLogDaoImpl extends AbstractGenericDao<SystemLog> implements ISystemLogDao {
 
 	public SystemLogDaoImpl() {
 		super(SystemLog.class);

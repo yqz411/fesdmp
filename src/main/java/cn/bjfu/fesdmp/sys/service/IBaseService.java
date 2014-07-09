@@ -8,6 +8,9 @@
 */  
   
 package cn.bjfu.fesdmp.sys.service;  
+
+import java.io.Serializable;
+
 /** 
  * ClassName:IBaseService <br/> 
  * Function: TODO ADD FUNCTION. <br/> 
@@ -20,5 +23,7 @@ package cn.bjfu.fesdmp.sys.service;
  */
 public interface IBaseService<T> {
 
+	public abstract T fetchById(Serializable id);
+	
 }
  

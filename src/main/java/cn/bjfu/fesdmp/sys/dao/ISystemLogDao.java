@@ -8,6 +8,9 @@
 */  
   
 package cn.bjfu.fesdmp.sys.dao;  
+
+import cn.bjfu.fesdmp.domain.sys.SystemLog;
+
 /** 
  * ClassName:ISystemLogDao <br/> 
  * Function: ISystemLogDao. <br/> 
@@ -18,7 +21,7 @@ package cn.bjfu.fesdmp.sys.dao;
  * @since    JDK 1.7 
  * @see       
  */
-public interface ISystemLogDao<T> extends IGenericDao<T> {
+public interface ISystemLogDao extends IGenericDao<SystemLog> {
 
 }
  
