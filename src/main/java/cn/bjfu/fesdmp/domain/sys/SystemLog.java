@@ -12,6 +12,7 @@ package cn.bjfu.fesdmp.domain.sys;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -39,7 +40,7 @@ import cn.bjfu.fesdmp.domain.enums.OperationType;
  * @see       
  */
 @Entity
-@Table(name = "system_log")
+@Table(name = "t_system_log")
 public class SystemLog implements Serializable {
 
 	/**
@@ -53,12 +54,16 @@ public class SystemLog implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date operateTime;
+	@Column(nullable = false)
 	private String operateContent;
+	@Column(nullable = false)
 	private String userName;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private OperationType operationType;
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private BusinessType businessType;
 
 	public SystemLog() {}
