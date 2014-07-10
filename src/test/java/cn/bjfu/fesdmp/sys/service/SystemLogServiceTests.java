@@ -56,7 +56,7 @@ public class SystemLogServiceTests {
 		
 		this.systemLogService.addSysLog(log);
 		System.out.println("add success");
-		List<SystemLog> list = this.systemLogService.queryAll();
+		List<SystemLog> list = this.systemLogService.queryAll(null);
 		System.out.println(list);
 	}
 	

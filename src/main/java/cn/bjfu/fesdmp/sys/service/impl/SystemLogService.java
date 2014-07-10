@@ -51,8 +51,8 @@ public class SystemLogService implements ISystemLogService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<SystemLog> queryAll() {
-		return this.systemLogDao.findAll();
+	public List<SystemLog> queryAll(IOrder order) {
+		return this.systemLogDao.findAll(order);
 	}
 	
 	@Transactional(readOnly = true)

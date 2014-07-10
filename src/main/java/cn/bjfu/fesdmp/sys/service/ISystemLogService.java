@@ -30,7 +30,7 @@ public interface ISystemLogService {
 
 	public abstract void addSysLog(SystemLog systemLog);
 	public abstract void deleteSysLog(SystemLog systemLog);
-	public abstract List<SystemLog> queryAll();
+	public abstract List<SystemLog> queryAll(IOrder order);
 	public abstract void queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page);
 	public abstract List<SystemLog> findByCondition(final Object condition, IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
 }
