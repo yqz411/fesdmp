@@ -41,7 +41,7 @@ public interface IGenericDao<T> {
 	 * @author zhangzhaoyu
 	 * @return
 	 */
-	public abstract List<T> findAll();
+	public abstract List<T> findAll(IOrder order);
 	/**
 	 * 
 	 * findByProperty:<br />
@@ -52,8 +52,8 @@ public interface IGenericDao<T> {
 	 * map 参数键值对的属性集合
 	 * @return
 	 */
-	public abstract List<T> findByProperty(final Map<String, Object> map);
-	public abstract void findByPage(String jpql, Object[] values, Pagination<T> page);
+	public abstract List<T> findByProperty(final Map<String, Object> map, IOrder order);
+	public abstract void findByPage(String jpql, Object[] values, Pagination<T> page, IOrder order);
 	/**
 	 * 
 	 * findByCondition:<br />

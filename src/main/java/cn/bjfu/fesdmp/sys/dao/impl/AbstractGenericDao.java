@@ -77,22 +77,32 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findAll() {
+	public List<T> findAll(IOrder order) {
 		String jpql = " SELECT p FROM " + this.entityClass.getSimpleName() + " p ";
+		if (order != null) {
+			jpql += order.convertToSQL();
+		}
 		return this.em.createQuery(jpql).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findByProperty(final Map<String, Object> map) {
-		String qlString = convertSqlFromMap(map);
-		Query query = this.em.createQuery(qlString);
+	public List<T> findByProperty(final Map<String, Object> map, IOrder order) {
+		String jpal = "SELECT p FROM " + this.entityClass.getSimpleName() + " p ";
+		jpal += convertSqlFromMap(map);
+		if (order != null) {
+			jpal += order.convertToSQL();
+		}
+		Query query = this.em.createQuery(jpal);
 		return query.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void findByPage(String jpql, Object[] values, Pagination<T> page) {
+	public void findByPage(String jpql, Object[] values, Pagination<T> page, IOrder order) {
+		if (order != null) {
+			jpql += order.convertToSQL();
+		}
 		
 		Query query = this.em.createQuery(jpql);
 		setQueryParams(query, values);
@@ -148,19 +158,36 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 		}
 	}
 	
+	/**
+	 * 
+	 * convertSqlFromMap:<br />
+	 * 将给定的Map 转换为 AND 连接的查询语句
+	 *
+	 * @author zhangzhaoyu
+	 * @param map
+	 * @return
+	 */
 	private String convertSqlFromMap(Map<String, Object> map) {
-		String sql = "SELECT p FROM " + this.entityClass.getSimpleName() + " p WHERE 1 = 1 ";
+		String sql = " WHERE 1 = 1 ";
 		StringBuilder builder = new StringBuilder(sql);
 		Set<String> set = map.keySet();
 		
 		for (String key : set) {
 			builder.append(" AND " + key +" = " + map.get(key));
 		}
-		
 		return builder.toString();
 	}
 	
-	private void setQueryParams(Query query, Object[] params) {  
+	/**
+	 * 
+	 * setQueryParams:<br />
+	 * 设置查询的参数
+	 *
+	 * @author zhangzhaoyu
+	 * @param query
+	 * @param params
+	 */
+	private void setQueryParams(Query query, Object ... params) {  
         if (null == params) {  
             return;  
         }
@@ -169,6 +196,14 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         }
 	}
 	
+	/**
+	 * 
+	 * getEntityManager:<br />
+	 * 获取实体管理器
+	 *
+	 * @author zhangzhaoyu
+	 * @return
+	 */
 	public EntityManager getEntityManager() {
 		return this.em;
 	}
