@@ -36,12 +36,15 @@ public interface IGenericDao<T> {
 	/**
 	 * 
 	 * findAll:<br />
-	 * 查询所有的记录
+	 * 查询所有
 	 *
 	 * @author zhangzhaoyu
+	 * @param order
+	 * 排序参数 可以为NULL
 	 * @return
 	 */
 	public abstract List<T> findAll(IOrder order);
+
 	/**
 	 * 
 	 * findByProperty:<br />
@@ -50,6 +53,8 @@ public interface IGenericDao<T> {
 	 * @author zhangzhaoyu
 	 * @param map
 	 * map 参数键值对的属性集合
+	 * @param order
+	 * 排序参数 可以为NULL
 	 * @return
 	 */
 	public abstract List<T> findByProperty(final Map<String, Object> map, IOrder order);
