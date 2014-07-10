@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,6 +65,7 @@ public class LogManagerController extends BaseController {
 	public Map<String, Object> systemlogList(PageInfoBean pageInfo) throws Exception {
 		
 		logger.info("systemlogList method.");
+		logger.info(pageInfo);
 		SystemLog log = null;
 		
 		Pagination<SystemLog> page = new Pagination<SystemLog>();
@@ -74,7 +76,7 @@ public class LogManagerController extends BaseController {
 		order.addOrderBy("operateTime", "DESC");
 		order.addOrderBy("id", "DESC");
 		
-		if (pageInfo.getSearchJson() != null) {
+		if (!StringUtils.isEmpty(pageInfo.getSearchJson())) {
 			log = this.gson.fromJson(pageInfo.getSearchJson(), SystemLog.class);
 		}
 		

@@ -3,7 +3,7 @@ Ext.define('Bjfu.log.view.QueryLog',{
 	bodyPadding: 5,
 	border:false,
 	initComponent: function() {
-    	var _this = this;
+    	var me = this;
     	
     	var businessTypeStore = Ext.create('Ext.data.Store', {
     		autoLoad:true,
@@ -29,15 +29,16 @@ Ext.define('Bjfu.log.view.QueryLog',{
 		        }
 			}
     	});
-    	Ext.apply(_this, {
+    	Ext.apply(me, {
     		layout: {
 		        type: 'table',
 		        columns: 2
 		    },
-    	    defaults: {                  
-    	    	margin:'15,0,5,5',
-		        labelAlign : 'right'
+    	    defaults: {  
+    	    	labelAlign:'right',
+    	        margin: '3 20 3 0'
     	    },
+		    defaultType: 'textfield',
     	    items: [{
     	    	id : 'userName',
     	    	xtype : 'textfield',
@@ -71,19 +72,27 @@ Ext.define('Bjfu.log.view.QueryLog',{
     	        valueField : 'value',
     	         emptyText : '请选择...'
     	    },{
-    	    	id : 'startTime',
     	    	xtype : 'datefield',
-				name :'startTime',
-				fieldLabel : '操作时间开始',
-				editable:false,
-				format : 'Y-m-d H:i:s'
-    	    },{
-    	    	id : 'endTime',
-    	    	xtype : 'datefield',
-				name : 'endTime',
-				fieldLabel : '操作时间结束',
+				fieldLabel : '开始时间',
+				altFormats: 'Y-m-d',
+				format : 'Y-m-d',
+				id : 'createStartTime',
+				name : 'createStartTime',
+				maxValue : new Date(),
 				editable : false,
-				format : 'Y-m-d H:i:s'
+				vtype : 'daterange',
+				endDateField :"createEndTime"
+    	    },{
+    	    	xtype : 'datefield',
+				fieldLabel : '结束时间',
+				altFormats: 'Y-m-d',
+				format : 'Y-m-d',
+				id : 'createEndTime',
+				name : 'createEndTime',
+				maxValue : new Date(),
+				vtype : 'daterange',
+				editable : false,
+				startDateField : "createStartTime"
     	    },{
     	    	id : 'operateContent',
     	    	xtype : 'textfield',
@@ -91,36 +100,29 @@ Ext.define('Bjfu.log.view.QueryLog',{
     	        name: 'operateContent'
     	    }]
     	});
-    	_this.callParent(arguments);
+    	me.callParent(arguments);
 	},
 	buttonAlign:'center', 
     buttons: [{
-        text: '重置',
-        handler: function() {
-            this.up('form').getForm().reset();
-        }
-    },{
-        text: '查询',
-        formBind: true,
-        disabled: true,
-        handler: function() {
-            var form = this.up('form').getForm();
-            var window = this.up('window');
-            if (form.isValid()) {
-            	var logValues = form.getValues();
-                Ext.apply(Ext.getCmp('logListViewId').store.proxy.extraParams, {
-                	userName : Ext.getCmp('userName').getValue(),
-                	userSourceIp : Ext.getCmp('userSourceIp').getValue(),
-                	businessType : Ext.getCmp('businessType').getValue(),
-                	operateContent : Ext.getCmp('operateContent').getValue(),
-                	startTime : Ext.getCmp('startTime').getValue(),
-                	endTime : Ext.getCmp('endTime').getValue(),
-                	operateType : Ext.getCmp('operateType').getValue()
-                });
-				Ext.getCmp('logListViewId').store.loadPage(1);
-				window.close(); 
-            }
-        }
-    }]
+		        text: '重置',
+		        handler: function() {
+		            this.up('form').getForm().reset();
+		        }
+		    },{
+		        text: '查询',
+		        formBind: true,
+		        disabled: true,
+		        handler: function() {
+		          	var form = this.up('form').getForm();
+		          	var viewId = this.up('form').listViewId;
+		            var warningStr = JSON.stringify(this.up('form').getForm().getValues());
+		            Ext.getCmp(viewId).getStore().load({
+		               		params: {
+		           				warningStr: warningStr
+		           			}
+		            });
+		            this.up('window').close();
+		        }
+		    }]
 });
 

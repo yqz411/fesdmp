@@ -12,9 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/extjs/css/buttons.css">
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/extjs/js/ext-all.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/extjs/js/ext-lang-zh_CN.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath() %>/resources/extjs/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/resources/extjs/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="<%=request.getContextPath() %>/resources/extjs/jquery/jquery.knob.js"></script>
   	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/extjs/jquery/jquery.hotkeys.min.js"></script>
+  	<script type="text/javascript" src="<%=request.getContextPath()%>/module/common/customVTypes.js"></script>
 	<script type="text/javascript">
 	Global_Path = "<%=request.getContextPath()%>/";
 	//Ext.Loader.setPath('Bjfu.tramp', rootUrl + "/demo/js");

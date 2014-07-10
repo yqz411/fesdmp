@@ -45,6 +45,10 @@ Ext.define('Bjfu.log.view.LogListView',{
 						Ext.apply(store.proxy.extraParams, { 
 							searchJson : me.search_cache
 						});
+					} else {
+						Ext.apply(store.proxy.extraParams, {
+							searchJson : ""
+						});
 					}
 				}
 			},
@@ -113,17 +117,21 @@ Ext.define('Bjfu.log.view.LogListView',{
 			       	handler : function(btn) {
 			       		var gridStore = btn.up('gridpanel').store;
 			       		var searchWord = Ext.getCmp("log.searchWord").getValue();
-			       		var searchStr = "{'userName' : '"+ searchWord +"'}";
-			       		// 缓存查询条件
-			       		me.search_cache = searchStr;
-			      		gridStore.load({
-			      			params: {
-		           				//searchJson: searchStr,
-		           				limit :	25,
-		           				page : 1,
-		           				start : 0
-		           			}
-			      		});
+			       		if (searchWord != "") {
+			       			var searchStr = "{'userName' : '"+ searchWord +"'}";
+			       			// 缓存查询条件
+				       		me.search_cache = searchStr;
+			       		} else {
+			       			me.search_cache = null;
+			       		}
+			       		
+			       		gridStore.load({
+				      			params: {
+			           				limit :	25,
+			           				page : 1,
+			           				start : 0
+			           			}
+				      		});
 			       }
 			    }, "->", {
 		    	text:'高级查询',
@@ -133,16 +141,22 @@ Ext.define('Bjfu.log.view.LogListView',{
 		       		var gridStore = btn.up('gridpanel').store;
 		      		var queryForm = Ext.create('Bjfu.log.view.QueryLog');
 		  			Ext.create('Ext.window.Window', {
-						title : '查询日志信息',
-			       		height : 300,
-			       		width : 590,
+						title : '日志信息高级查询',
+			       		height : 250,
+			       		width:600,
 			       		closable : true,
 			       		closeAction : 'destroy',
 			       		border : false,
 			       		modal : true,
 			       		resizable : false,
 			       		layout : 'fit',
-			       		items : [queryForm]
+			       		items : [queryForm],
+			       		listeners : {
+									'close' : function(){
+										me.search_cache = JSON.stringify(queryForm.getForm().getValues());
+										this.destroy();
+									}
+								}
 			       	}).show();
 		       }
 			}],
