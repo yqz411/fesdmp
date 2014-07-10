@@ -28,9 +28,9 @@ Ext.define('Bjfu.log.view.logListView',{
 	                update : 'POST',
 	                destroy: 'POST'
 				},
-				extraParams: {  
+				/*extraParams: {  
 	                searchJson : '{ismpewStatus : 1}'
-	            },  
+	            },*/  
 				url : Global_Path+'syslog/systemlogList',
 				reader : {
 					type : 'json',

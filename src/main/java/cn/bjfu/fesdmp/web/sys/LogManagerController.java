@@ -68,8 +68,7 @@ public class LogManagerController extends BaseController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("pageCount", page.getTotalRecord());
 		result.put("result", page.getDatas());
-		System.out.println(page.getDatas());
-		System.out.println(result);
+		
 		return result;
 	}
 	
