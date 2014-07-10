@@ -9,7 +9,7 @@
   
 package cn.bjfu.fesdmp.frame.dao;  
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,11 +27,11 @@ public class Order implements IOrder {
 
 	private Map<String, Object> map;
 	public Order() {
-		map = new HashMap<String, Object>();
+		map = new LinkedHashMap<String, Object>();
 	}
 	
 	public Order(String key, String direction) {
-		map = new HashMap<String, Object>();
+		map = new LinkedHashMap<String, Object>();
 		map.put(key, direction);
 	}
 	
@@ -49,14 +49,27 @@ public class Order implements IOrder {
 			for (String key : set) {
 				builder.append(key +" " + map.get(key));
 			}
+			return builder.toString();
 		} else if (size > 1) {
 			for (String key : set) {
 				builder.append(key +" " + map.get(key) +" ,");
 			}
-			builder.substring(0, builder.length() - 1);
+			String result = builder.toString();
+			return result.substring(0, result.lastIndexOf(","));
 		}
-		return builder.toString();
+		return null;
 	}
 
+	public static void main(String[] args) {
+		IOrder order = new Order();
+		order.addOrderBy("name", "DESC");
+		System.out.println(order.convertToSQL());
+	}
+
+	@Override
+	public Map<String, Object> getOrderByMap() {
+		return this.map;
+	}
+	
 }
  

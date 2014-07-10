@@ -1,4 +1,4 @@
-Ext.define('Bjfu.log.view.queryLog',{
+Ext.define('Bjfu.log.view.QueryLog',{
 	extend:'Ext.form.Panel',
 	bodyPadding: 5,
 	border:false,

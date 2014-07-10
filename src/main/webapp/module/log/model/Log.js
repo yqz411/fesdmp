@@ -1,4 +1,4 @@
-Ext.define('Bjfu.log.model.log',{
+Ext.define('Bjfu.log.model.Log',{
 	extend : 'Ext.data.Model',
 	fields : [{
     	name : 'id',   					

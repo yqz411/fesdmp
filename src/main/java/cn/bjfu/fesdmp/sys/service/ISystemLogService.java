@@ -32,6 +32,6 @@ public interface ISystemLogService {
 	public abstract void deleteSysLog(SystemLog systemLog);
 	public abstract List<SystemLog> queryAll(IOrder order);
 	public abstract void queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page);
-	public abstract List<SystemLog> findByCondition(final Object condition, IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
+	public abstract List<SystemLog> queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
 }
  

@@ -9,13 +9,13 @@
   	 	Ext.Loader.setConfig({
 	    	enabled: true,
 	    	paths: {
-	    		'Bjfu.log.view.logListView': Global_Path + '/module/log/view/logListView.js',
-	    		'Bjfu.log.view.queryLog' : Global_Path + '/module/log/view/queryLog.js'
+	    		'Bjfu.log.view.LogListView': Global_Path + 'module/log/view/LogListView.js',
+	    		'Bjfu.log.view.QueryLog' : Global_Path + 'module/log/view/QueryLog.js'
 	    	}
 		});
   	 	
 		Ext.onReady(function(){
-			var syslogListView = Ext.create('Bjfu.log.view.logListView',{
+			var syslogListView = Ext.create('Bjfu.log.view.LogListView',{
 									width:'100%',
 									autoShow : true,
 									autoRender : true,

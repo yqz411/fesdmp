@@ -64,7 +64,7 @@ public class SystemLogService implements ISystemLogService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<SystemLog> findByCondition(Object condition, IOrder order,
+	public List<SystemLog> queryByCondition(Object condition, IOrder order,
 			Pagination<SystemLog> page, JoinMode joinMode) {
 		return this.systemLogDao.findByCondition(condition, order, page, joinMode);
 	}

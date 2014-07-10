@@ -44,14 +44,14 @@ public class SystemLogServiceTests {
 	@Autowired
 	private ISystemLogService systemLogService;
 	
-	@Ignore
+	@Test
 	public void test() {
 		SystemLog log = new SystemLog();
-		log.setBusinessType(BusinessType.SYS_LOGIN);
+		log.setBusinessType(BusinessType.SYS_LOGOUT);
 		log.setOperateContent("user login");
 		log.setOperateTime(new Date());
-		log.setOperationType(OperationType.QUERY);
-		log.setUserName("Lilei");
+		log.setOperationType(OperationType.DELETE);
+		log.setUserName("Lily002");
 		log.setUserSourceIp("202.204.110.22");
 		
 		this.systemLogService.addSysLog(log);
@@ -60,7 +60,7 @@ public class SystemLogServiceTests {
 		System.out.println(list);
 	}
 	
-	@Test
+	@Ignore
 	public void testFind() {
 		IOrder order = new Order();
 		order.addOrderBy("operateTime", "DESC");
@@ -70,7 +70,7 @@ public class SystemLogServiceTests {
 		
 		Pagination<SystemLog> pagination = new Pagination<SystemLog>();
 		
-		List list = this.systemLogService.findByCondition(log, order, pagination, JoinMode.AND);
+		List list = this.systemLogService.queryByCondition(log, order, pagination, JoinMode.AND);
 		System.out.println(list);
 	}
 }

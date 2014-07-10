@@ -91,7 +91,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 		String jpal = "SELECT p FROM " + this.entityClass.getSimpleName() + " p ";
 		jpal += convertSqlFromMap(map);
 		if (order != null) {
-			jpal += order.convertToSQL();
+			jpal += convertToSQL(order);
 		}
 		Query query = this.em.createQuery(jpal);
 		return query.getResultList();
@@ -101,7 +101,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	@Override
 	public void findByPage(String jpql, Object[] values, Pagination<T> page, IOrder order) {
 		if (order != null) {
-			jpql += order.convertToSQL();
+			jpql += convertToSQL(order);
 		}
 		
 		Query query = this.em.createQuery(jpql);
@@ -122,7 +122,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 			jpal += convertBeanToAndQL(condition);
 		}
 		if (order != null) {
-			jpal += order.convertToSQL();
+			jpal += convertToSQL(order);
 		}
 		Query query = this.em.createQuery(jpal);
 		if (page != null){
@@ -143,7 +143,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 			jpal += convertBeanToJPAL(condition, joinMode);
 		} 
 		if (order != null) {
-			jpal += order.convertToSQL();
+			jpal += convertToSQL(order);
 		}
 		
 		logger.info(jpal);
@@ -308,18 +308,22 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 		StringBuilder qlString = new StringBuilder();
 		try {
 			Map map = PropertyUtils.describe(bean);
-			Set keyset = map.entrySet();
+			Set keyset = map.keySet();
 			for (Object key : keyset) {
-				Object value = map.get(key);
-				String type = PropertyUtils.getPropertyType(bean, key.toString()).toString();
-				
-				if (type.contains("String") && value != null) {
-					qlString.append(" AND p." + key + " like '%" + value + "%'");
-				} else if ((type.contains("Integer") || type.contains("Long") 
-						|| type.contains("Short") || type.contains("Byte")
-						|| type.contains("Double") || type.contains("Float")
-						|| type.contains("Boolean"))&& value != null) {
-					qlString.append(" AND p." + key + " = " + value);
+				if (!key.toString().equals("class")) {
+					Object value = map.get(key);
+					Class typeClass = PropertyUtils.getPropertyType(bean, key.toString());
+					if (typeClass != null) {
+						String type = typeClass.toString();
+						if (value != null && type.contains("String")) {
+							qlString.append(" AND p." + key + " like '%" + value + "%'");
+						} else if (value != null && (type.contains("Integer") || type.contains("Long") 
+								|| type.contains("Short") || type.contains("Byte")
+								|| type.contains("Double") || type.contains("Float")
+								|| type.contains("Boolean"))) {
+							qlString.append(" AND p." + key + " = " + value);
+						}
+					}
 				}
 			}
 		} catch (IllegalAccessException | InvocationTargetException
@@ -327,6 +331,35 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 			logger.info("convertBeanToQL exception.");
 		}
 		return qlString.toString();
+	}
+	
+	/**
+	 * 
+	 * convertToSQL:<br />
+	 * 将排序转化为JPQL
+	 *
+	 * @author zhangzhaoyu
+	 * @param order
+	 * @return
+	 */
+	protected String convertToSQL(IOrder order) {
+		StringBuilder builder = new StringBuilder(" ORDER BY ");
+		Map<String, Object> map = order.getOrderByMap();
+		Set<String> set = map.keySet();
+		int size = set.size();
+		if (size == 1) {
+			for (String key : set) {
+				builder.append(" p." + key +" " + map.get(key));
+			}
+			return builder.toString();
+		} else if (size > 1) {
+			for (String key : set) {
+				builder.append(" p." + key  +" " + map.get(key) +" ,");
+			}
+			String result = builder.toString();
+			return result.substring(0, result.lastIndexOf(","));
+		}
+		return null;
 	}
 }
  

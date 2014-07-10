@@ -8,6 +8,9 @@
 */  
   
 package cn.bjfu.fesdmp.frame.dao;  
+
+import java.util.Map;
+
 /** 
  * ClassName:IOrder <br/> 
  * Function: 排序的接口类. <br/> 
@@ -21,5 +24,6 @@ package cn.bjfu.fesdmp.frame.dao;
 public interface IOrder {
 	public abstract void addOrderBy(String key, String direction);
 	public abstract String convertToSQL();
+	public abstract Map<String, Object> getOrderByMap();
 }
  

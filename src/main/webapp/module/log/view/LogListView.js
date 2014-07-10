@@ -1,6 +1,6 @@
-Ext.define('Bjfu.log.view.logListView',{
+Ext.define('Bjfu.log.view.LogListView',{
 	extend : 'Ext.grid.Panel',
-	alias:'widget.logListView',
+	alias:'widget.LogListView',
 	id : 'logListViewId',
 	forceFit : true,
 	layout : 'fit',
@@ -13,13 +13,13 @@ Ext.define('Bjfu.log.view.logListView',{
 	overflowY : 'scroll', //只显示上下滚动的滚动条
 	overflowX : 'hidden',
 	selType : 'checkboxmodel',	// 单选，复选框
-	requires : ['Bjfu.log.model.log'],
+	requires : ['Bjfu.log.model.Log'],
 	
 	initComponent : function() {
 		var me = this;
 		var gridStore = Ext.create('Ext.data.Store', {
-			model : 'Bjfu.log.model.log',
-			pageSize : '25',
+			model : 'Bjfu.log.model.Log',
+			pageSize : 25,
 			proxy : {
 				type : 'ajax',
 				actionMethods: {
@@ -41,9 +41,9 @@ Ext.define('Bjfu.log.view.logListView',{
 			},
 			listeners : {
 				'beforeload': function(store, operation, eOpts) {
-					if (me.search_cache!=null) {
+					if (me.search_cache != null) {
 						Ext.apply(store.proxy.extraParams, { 
-							warningStr : me.search_cache
+							searchJson : me.search_cache
 						});
 					}
 				}
@@ -100,39 +100,38 @@ Ext.define('Bjfu.log.view.logListView',{
 			    }
 			],
 			tbar : [{
-				 	fieldLabel: '搜索关键词',
+				 	fieldLabel: '查询关键词',
 					xtype : 'textfield',
-					id : 'searchWord',
+					id : 'log.searchWord',
 					name : 'searchWord',
 					width : 300,
-					emptyText : '用户名/操作内容'
+					emptyText : '用户名'
 				},{
 			       	text : '查询' ,
 			       	icon : Global_Path + '/resources/extjs/images/search.png',
 			       	scope : this, 
 			       	handler : function(btn) {
 			       		var gridStore = btn.up('gridpanel').store;
-			      		var queryForm = Ext.create('Bjfu.log.view.queryLog');
-			  			Ext.create('Ext.window.Window', {
-							title : '查询日志信息',
-				       		height : 300,
-				       		width : 590,
-				       		closable : true,
-				       		closeAction : 'destroy',
-				       		border : false,
-				       		modal : true,
-				       		resizable : false,
-				       		layout : 'fit',
-				       		items : [queryForm]
-				       	}).show();
+			       		var searchWord = Ext.getCmp("log.searchWord").getValue();
+			       		var searchStr = "{'userName' : '"+ searchWord +"'}";
+			       		// 缓存查询条件
+			       		me.search_cache = searchStr;
+			      		gridStore.load({
+			      			params: {
+		           				//searchJson: searchStr,
+		           				limit :	25,
+		           				page : 1,
+		           				start : 0
+		           			}
+			      		});
 			       }
 			    }, "->", {
-		    	text:'高级搜索',
+		    	text:'高级查询',
 		    	scope:this,
 		    	icon : Global_Path + '/resources/extjs/images/search.png',
 	    		handler : function(btn) {
 		       		var gridStore = btn.up('gridpanel').store;
-		      		var queryForm = Ext.create('Bjfu.log.view.queryLog');
+		      		var queryForm = Ext.create('Bjfu.log.view.QueryLog');
 		  			Ext.create('Ext.window.Window', {
 						title : '查询日志信息',
 			       		height : 300,

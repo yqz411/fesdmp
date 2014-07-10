@@ -39,6 +39,64 @@ import cn.bjfu.fesdmp.domain.sys.SystemLog;
  */
 public class ReflectTest {
 
+	public  String convertBeanToAndQL(Object bean) {
+		StringBuilder qlString = new StringBuilder();
+		try {
+			Map map = PropertyUtils.describe(bean);
+			Set keyset = map.keySet();
+			for (Object key : keyset) {
+				System.out.println("key -> " + key);
+				if (!key.toString().equals("class")) {
+					Object value = map.get(key);
+					Class typeClass = PropertyUtils.getPropertyType(bean, key.toString());
+					if (typeClass != null) {
+						String type = typeClass.toString();
+						if (value != null && type.contains("String")) {
+							qlString.append(" AND p." + key + " like '%" + value + "%'");
+						} else if (value != null && (type.contains("Integer") || type.contains("Long") 
+								|| type.contains("Short") || type.contains("Byte")
+								|| type.contains("Double") || type.contains("Float")
+								|| type.contains("Boolean"))) {
+							qlString.append(" AND p." + key + " = " + value);
+						}
+					}
+				}
+			}
+		} catch (IllegalAccessException | InvocationTargetException
+				| NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		return qlString.toString();
+	}
+	
+	@Test
+	public void test() {
+		Dog dog = new Dog("cacaca", 12);
+		
+		System.out.println(convertBeanToAndQL(dog));
+		System.out.println("----------------------------------------------------------");
+		Map map = null;
+		try {
+			map = PropertyUtils.describe(dog);
+			Set keyset = map.keySet();
+			for (Object key : keyset) {
+				System.out.print("key : " + key + " ||||||| value : " + map.get(key));
+				System.out.println("|| type : " + PropertyUtils.getPropertyType(dog, key.toString()));
+			}
+			System.out.println(map);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Ignore
 	public void testReflect()  {
 		
@@ -88,7 +146,7 @@ public class ReflectTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void testBeanReflects() throws Exception {
 		
 		SystemLog log = new SystemLog();
