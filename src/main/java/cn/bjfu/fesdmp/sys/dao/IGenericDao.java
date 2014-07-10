@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.JoinMode;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.utils.Pagination;
 
 /** 

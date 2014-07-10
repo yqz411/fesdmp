@@ -22,9 +22,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cn.bjfu.fesdmp.domain.enums.BusinessType;
 import cn.bjfu.fesdmp.domain.enums.OperationType;
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.JoinMode;
-import cn.bjfu.fesdmp.frame.Order;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
+import cn.bjfu.fesdmp.frame.dao.Order;
 import cn.bjfu.fesdmp.utils.Pagination;
 
 /** 

@@ -7,7 +7,7 @@
  * 
 */  
   
-package cn.bjfu.fesdmp.frame;  
+package cn.bjfu.fesdmp.frame.dao;  
 /** 
  * ClassName:IOrder <br/> 
  * Function: 排序的接口类. <br/> 

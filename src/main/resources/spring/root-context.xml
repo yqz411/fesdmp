@@ -131,4 +131,7 @@
 			<ref bean="dataSource"/>
 		</property>
 	</bean>
+	
+	<!-- 当Spring容器启动完成后执行下面的这个Bean -->
+    <bean class="cn.bjfu.fesdmp.frame.listener.InstantiationTracingBeanPostProcessor"/>
 </beans>

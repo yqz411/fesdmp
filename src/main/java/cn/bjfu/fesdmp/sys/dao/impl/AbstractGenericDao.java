@@ -25,8 +25,8 @@ import javax.persistence.Query;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
 
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.JoinMode;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.sys.dao.IGenericDao;
 import cn.bjfu.fesdmp.utils.Pagination;
 

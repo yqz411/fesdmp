@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.Order;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.Order;
 import cn.bjfu.fesdmp.sys.service.ISystemLogService;
 import cn.bjfu.fesdmp.utils.PageInfoBean;
 import cn.bjfu.fesdmp.utils.Pagination;

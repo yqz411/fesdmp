@@ -7,7 +7,7 @@
  * 
 */  
   
-package cn.bjfu.fesdmp.frame;  
+package cn.bjfu.fesdmp.frame.dao;  
 
 import java.util.HashMap;
 import java.util.Map;

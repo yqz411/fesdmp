@@ -7,7 +7,7 @@
  * 
 */  
   
-package cn.bjfu.fesdmp.frame;  
+package cn.bjfu.fesdmp.frame.dao;  
 /** 
  * ClassName:JoinMode <br/> 
  * Function: JoinMode SQL 语句的联结类型. <br/> 

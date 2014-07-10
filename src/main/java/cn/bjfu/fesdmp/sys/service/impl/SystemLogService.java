@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.JoinMode;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.sys.dao.ISystemLogDao;
 import cn.bjfu.fesdmp.sys.service.ISystemLogService;
 import cn.bjfu.fesdmp.utils.Pagination;

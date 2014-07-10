@@ -12,8 +12,8 @@ package cn.bjfu.fesdmp.sys.service;
 import java.util.List;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
-import cn.bjfu.fesdmp.frame.IOrder;
-import cn.bjfu.fesdmp.frame.JoinMode;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.utils.Pagination;
 
 /** 
