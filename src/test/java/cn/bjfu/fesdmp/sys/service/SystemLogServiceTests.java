@@ -70,7 +70,7 @@ public class SystemLogServiceTests {
 		
 		Pagination<SystemLog> pagination = new Pagination<SystemLog>();
 		
-		List list = this.systemLogService.findByCondition(null, null, null, null);
+		List list = this.systemLogService.findByCondition(log, order, pagination, JoinMode.AND);
 		System.out.println(list);
 	}
 }

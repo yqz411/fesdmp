@@ -128,13 +128,10 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findByCondition(final Object condition, IOrder order, 
 			Pagination<T> page, JoinMode joinMode) {
-		String jpal = null;
+		String jpal = " SELECT p FROM "+ entityClass.getSimpleName() +" p ";
 		if (condition != null) {
-			jpal = convertBeanToJPAL(condition, joinMode);
-		} else {
-			jpal = "SELECT p FROM "+ entityClass.getSimpleName() +" p ";
-		}
-		
+			jpal += convertBeanToJPAL(condition, joinMode);
+		} 
 		if (order != null) {
 			jpal += order.convertToSQL();
 		}
@@ -196,7 +193,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 		StringBuilder qlStirng = new StringBuilder();
 		
 		if (joinMode == JoinMode.AND) {
-			qlStirng.append(" SELECT p FROM "+ entityClass.getSimpleName() +" p WHERE 1 = 1 ");
+			qlStirng.append(" WHERE 1 = 1 ");
 			for (Field field : fields) {
 				String filedName = field.getName();
 				String firstLetter = filedName.substring(0, 1).toUpperCase();
@@ -224,7 +221,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 			return qlStirng.toString();
 		}
 		else if (joinMode == JoinMode.OR) {
-			qlStirng.append(" SELECT p FROM "+ entityClass.getSimpleName() +" p WHERE ");
+			qlStirng.append(" WHERE ");
 			int size = fields.length;
 			for (int i=0; i<size; i++) {
 				Field field = fields[i];
@@ -239,20 +236,14 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 					String type = field.getGenericType().toString();
 					int modifier = field.getModifiers();
 					// just private not final static 
-					if (Modifier.isPrivate(modifier) && !Modifier.isFinal(modifier) 
-							&& !Modifier.isStatic(modifier) && value != null && i == (size -1)) {
-						if (type.contains("String")) {
-							qlStirng.append(" p." + filedName + " like '%" + value + "%' ");
-						} else if (type.contains("Integer") || type.contains("Long") 
-								|| type.contains("Short") || type.contains("Byte")) {
-							qlStirng.append(" p." + filedName + " = " + value);
-						}
-					} else if (Modifier.isPrivate(modifier) && !Modifier.isFinal(modifier) 
-							&& !Modifier.isStatic(modifier) && value != null && i < (size -1)) {
+					 if (Modifier.isPrivate(modifier) && !Modifier.isFinal(modifier) 
+							&& !Modifier.isStatic(modifier) && value != null) {
 						if (type.contains("String")) {
 							qlStirng.append(" p." + filedName + " like '%" + value + "%' OR ");
 						} else if (type.contains("Integer") || type.contains("Long") 
-								|| type.contains("Short") || type.contains("Byte")) {
+								|| type.contains("Short") || type.contains("Byte")
+								|| type.contains("Double") || type.contains("Float")
+								|| type.contains("Boolean")) {
 							qlStirng.append(" p." + filedName + " = " + value + " OR ");
 						}
 					}
@@ -267,7 +258,16 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 		return null;
 	}
 	
-	
+	/**
+	 * 
+	 * convertBeanToAndQL:<br />
+	 * 将一个实体Bean 转换成 AND 联结的JPAL
+	 * 暂时只处理数值类型、字符串和Bool
+	 *
+	 * @author zhangzhaoyu
+	 * @param bean
+	 * @return
+	 */
 	@SuppressWarnings("rawtypes")
 	protected String convertBeanToAndQL(Object bean) {
 		StringBuilder qlString = new StringBuilder();
@@ -281,7 +281,9 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 				if (type.contains("String") && value != null) {
 					qlString.append(" AND p." + key + " like '%" + value + "%'");
 				} else if ((type.contains("Integer") || type.contains("Long") 
-						|| type.contains("Short") || type.contains("Byte")) && value != null) {
+						|| type.contains("Short") || type.contains("Byte")
+						|| type.contains("Double") || type.contains("Float")
+						|| type.contains("Boolean"))&& value != null) {
 					qlString.append(" AND p." + key + " = " + value);
 				}
 			}
