@@ -102,9 +102,10 @@ Ext.define('Bjfu.log.view.logListView',{
 			tbar : [{
 				 	fieldLabel: '搜索关键词',
 					xtype : 'textfield',
+					id : 'searchWord',
 					name : 'searchWord',
-					width : 340,
-					emptyText : '业务类型/操作类型/用户名/操作内容'
+					width : 300,
+					emptyText : '用户名/操作内容'
 				},{
 			       	text : '查询' ,
 			       	icon : Global_Path + '/resources/extjs/images/search.png',
@@ -129,43 +130,22 @@ Ext.define('Bjfu.log.view.logListView',{
 		    	text:'高级搜索',
 		    	scope:this,
 		    	icon : Global_Path + '/resources/extjs/images/search.png',
-		    	handler : function(o) {
-		    		var gird = o.ownerCt.ownerCt;
-				    var check = gird.getSelectionModel().getSelection();
-					var idStr = "";
-					if(check.length>0){
-						for(var i=0;i<check.length;i++){
-							if(check[i]!=undefined){
-								idStr+=check[i].get("id")+",";
-							}
-						}
-		    	         Ext.MessageBox.confirm("提示", "确定要导出以上原始通告预警数据吗？", function(btn) {
-						    if (btn == 'yes') {
-						    	if (!Ext.fly('downForm', "_global")){      
-	  								var downForm = document.createElement('form'); 
-	 								downForm.id = 'downForm'; 
-	  								downForm.name = 'downForm'; 
-	  								downForm.className = 'x-hidden';
-	 								downForm.action = Global_Path+"/smp/warningAnnounce!exportWarningAnnounce"; 
-	 								downForm .method = 'post';  
-	 
-	 								var data = document.createElement('input');  
-	  								data.type = 'hidden';//隐藏域
-	  								data.name = 'ids';// form表单参数
-	 								data.value = idStr;//form表单值
-	 								downForm.appendChild(data); 
-	 								document.body.appendChild(downForm ); 
-	 							}        
-	 							Ext.fly('downForm').dom.submit(); 
-	     						if (Ext.fly('downForm')){      
-	     							document.body.removeChild(downForm );      
-								}
-							}
-						 });
-					}else{
-						Ext.Msg.alert("提示","请选择需要导出的原始通告预警数据！");
-					}
-				}
+	    		handler : function(btn) {
+		       		var gridStore = btn.up('gridpanel').store;
+		      		var queryForm = Ext.create('Bjfu.log.view.queryLog');
+		  			Ext.create('Ext.window.Window', {
+						title : '查询日志信息',
+			       		height : 300,
+			       		width : 590,
+			       		closable : true,
+			       		closeAction : 'destroy',
+			       		border : false,
+			       		modal : true,
+			       		resizable : false,
+			       		layout : 'fit',
+			       		items : [queryForm]
+			       	}).show();
+		       }
 			}],
 			loadMask:true,
 			bbar : Ext.create('Ext.toolbar.Paging', {

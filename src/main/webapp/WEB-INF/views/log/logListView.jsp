@@ -24,6 +24,7 @@
 											
 			Ext.create('Ext.panel.Panel',{
 				autoShow : true,
+				autoRender : true,
 				title:'日志管理',
 				width:'100%',
 				height:'100%',
@@ -32,10 +33,10 @@
 				renderTo:'systemLogPanel',
 				listeners : {
 					'render' : function() {
-						this.updateBox(Ext.getCmp('centerPanel').getSize ());
+						this.updateBox(Ext.getCmp('centerPanel').getSize());
 					}
 			    }
-			});
+			}).show();
 		});
 	</script>
 </head>
