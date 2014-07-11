@@ -16,6 +16,7 @@
   	 	
 		Ext.onReady(function(){
 			var syslogListView = Ext.create('Bjfu.log.view.LogListView',{
+									id :'logListViewId',
 									width:'100%',
 									autoShow : true,
 									autoRender : true,

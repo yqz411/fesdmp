@@ -16,6 +16,7 @@
   	<script type="text/javascript" src="<%=request.getContextPath() %>/resources/extjs/jquery/jquery.knob.js"></script>
   	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/extjs/jquery/jquery.hotkeys.min.js"></script>
   	<script type="text/javascript" src="<%=request.getContextPath()%>/module/common/customVTypes.js"></script>
+  	<script type="text/javascript" src="<%=request.getContextPath()%>/module/common/DictionaryStatus.js"></script>
 	<script type="text/javascript">
 	Global_Path = "<%=request.getContextPath()%>/";
 	//Ext.Loader.setPath('Bjfu.tramp', rootUrl + "/demo/js");

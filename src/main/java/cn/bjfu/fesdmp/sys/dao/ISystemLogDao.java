@@ -9,7 +9,13 @@
   
 package cn.bjfu.fesdmp.sys.dao;  
 
+import java.util.List;
+
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
+import cn.bjfu.fesdmp.frame.dao.IOrder;
+import cn.bjfu.fesdmp.frame.dao.JoinMode;
+import cn.bjfu.fesdmp.utils.Pagination;
+import cn.bjfu.fesdmp.web.jsonbean.LogSearch;
 
 /** 
  * ClassName:ISystemLogDao <br/> 
@@ -23,5 +29,19 @@ import cn.bjfu.fesdmp.domain.sys.SystemLog;
  */
 public interface ISystemLogDao extends IGenericDao<SystemLog> {
 
+	/**
+	 * 
+	 * findByCondtinWithOperationTime:<br />
+	 * 查询包括时间
+	 *
+	 * @author zhangzhaoyu
+	 * @param condition
+	 * @param order
+	 * @param page
+	 * @param joinMode
+	 */
+	public abstract List<SystemLog> findByCondtinWithOperationTime(final LogSearch condition, 
+			IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
+	
 }
  

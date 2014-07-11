@@ -21,6 +21,7 @@ import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.sys.dao.ISystemLogDao;
 import cn.bjfu.fesdmp.sys.service.ISystemLogService;
 import cn.bjfu.fesdmp.utils.Pagination;
+import cn.bjfu.fesdmp.web.jsonbean.LogSearch;
 
 /** 
  * ClassName:SystemLogService <br/> 
@@ -67,6 +68,12 @@ public class SystemLogService implements ISystemLogService {
 	public List<SystemLog> queryByCondition(Object condition, IOrder order,
 			Pagination<SystemLog> page, JoinMode joinMode) {
 		return this.systemLogDao.findByCondition(condition, order, page, joinMode);
+	}
+
+	@Override
+	public List<SystemLog> queryByCondtinWithOperationTime(LogSearch condition,
+			IOrder order, Pagination<SystemLog> page, JoinMode joinMode) {
+		return this.systemLogDao.findByCondtinWithOperationTime(condition, order, page, joinMode);
 	}
 
 }

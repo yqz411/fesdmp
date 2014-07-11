@@ -1,7 +1,6 @@
 Ext.define('Bjfu.log.view.LogListView',{
 	extend : 'Ext.grid.Panel',
 	alias:'widget.LogListView',
-	id : 'logListViewId',
 	forceFit : true,
 	layout : 'fit',
     autoScroll: true,
@@ -152,11 +151,11 @@ Ext.define('Bjfu.log.view.LogListView',{
 			       		layout : 'fit',
 			       		items : [queryForm],
 			       		listeners : {
-									'close' : function(){
-										me.search_cache = JSON.stringify(queryForm.getForm().getValues());
-										this.destroy();
-									}
-								}
+							'close' : function(){
+								me.search_cache = JSON.stringify(queryForm.getForm().getValues());
+								this.destroy();
+							}
+						}
 			       	}).show();
 		       }
 			}],

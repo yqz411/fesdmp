@@ -23,6 +23,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import cn.bjfu.fesdmp.frame.dao.IOrder;
@@ -212,7 +213,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	 * 
 	 * convertBeanToJPAL:<br />
 	 * 将给定的Bean 按照JoinMode 拼接成JPQL
-	 * 注意 ： 本函数只能处理数值和字符串
+	 * 注意 ： 本函数只能处理数值和字符串(字符串类型排除名字包含time 和 date)
 	 *
 	 * @author zhangzhaoyu
 	 * @param bean 
@@ -241,8 +242,9 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 					int modifier = field.getModifiers();
 					// just private not final static 
 					if (Modifier.isPrivate(modifier) && !Modifier.isFinal(modifier) 
-							&& !Modifier.isStatic(modifier) && value != null) {
-						if (type.contains("String")) {
+							&& !Modifier.isStatic(modifier) && StringUtils.isNotEmpty(value.toString())) {
+						if (type.contains("String")&&!filedName.toLowerCase().contains("time")
+								&&!filedName.toLowerCase().contains("date")) {
 							qlStirng.append(" AND p." + filedName + " like '%" + value + "%'");
 						} else if (type.contains("Integer") || type.contains("Long") 
 								|| type.contains("Short") || type.contains("Byte")) {
@@ -273,7 +275,8 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 					// just private not final static 
 					 if (Modifier.isPrivate(modifier) && !Modifier.isFinal(modifier) 
 							&& !Modifier.isStatic(modifier) && value != null) {
-						if (type.contains("String")) {
+						if (type.contains("String")&&!filedName.toLowerCase().contains("time")
+								&&!filedName.toLowerCase().contains("date")) {
 							qlStirng.append(" p." + filedName + " like '%" + value + "%' OR ");
 						} else if (type.contains("Integer") || type.contains("Long") 
 								|| type.contains("Short") || type.contains("Byte")
@@ -315,7 +318,8 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 					Class typeClass = PropertyUtils.getPropertyType(bean, key.toString());
 					if (typeClass != null) {
 						String type = typeClass.toString();
-						if (value != null && type.contains("String")) {
+						if (value != null && type.contains("String")&&!key.toString().toLowerCase().contains("time")
+								&&!key.toString().toLowerCase().contains("date")) {
 							qlString.append(" AND p." + key + " like '%" + value + "%'");
 						} else if (value != null && (type.contains("Integer") || type.contains("Long") 
 								|| type.contains("Short") || type.contains("Byte")

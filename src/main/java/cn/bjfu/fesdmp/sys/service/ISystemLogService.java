@@ -15,6 +15,7 @@ import cn.bjfu.fesdmp.domain.sys.SystemLog;
 import cn.bjfu.fesdmp.frame.dao.IOrder;
 import cn.bjfu.fesdmp.frame.dao.JoinMode;
 import cn.bjfu.fesdmp.utils.Pagination;
+import cn.bjfu.fesdmp.web.jsonbean.LogSearch;
 
 /** 
  * ClassName:ISystemLogService <br/> 
@@ -32,6 +33,9 @@ public interface ISystemLogService {
 	public abstract void deleteSysLog(SystemLog systemLog);
 	public abstract List<SystemLog> queryAll(IOrder order);
 	public abstract void queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page);
-	public abstract List<SystemLog> queryByCondition(final Object condition, IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
+	public abstract List<SystemLog> queryByCondition(final Object condition, IOrder order,
+			Pagination<SystemLog> page, JoinMode joinMode);
+	public List<SystemLog> queryByCondtinWithOperationTime(LogSearch condition,
+			IOrder order, Pagination<SystemLog> page, JoinMode joinMode);
 }
  

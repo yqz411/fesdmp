@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import cn.bjfu.fesdmp.domain.sys.SystemLog;
 import cn.bjfu.fesdmp.frame.dao.IOrder;
@@ -34,6 +37,7 @@ import cn.bjfu.fesdmp.sys.service.ISystemLogService;
 import cn.bjfu.fesdmp.utils.PageInfoBean;
 import cn.bjfu.fesdmp.utils.Pagination;
 import cn.bjfu.fesdmp.web.BaseController;
+import cn.bjfu.fesdmp.web.jsonbean.LogSearch;
 
 /** 
  * ClassName:LogManagerController <br/> 
@@ -49,8 +53,8 @@ import cn.bjfu.fesdmp.web.BaseController;
 @RequestMapping(value = "/syslog")
 public class LogManagerController extends BaseController {
 	private static final Logger logger = Logger.getLogger(LogManagerController.class);
-	private Gson gson = new Gson();
-	
+	private Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
+	private ObjectMapper mapper = new ObjectMapper();
 	@Autowired
 	private ISystemLogService systemLogService;
 	
@@ -64,9 +68,11 @@ public class LogManagerController extends BaseController {
 	@ResponseBody
 	public Map<String, Object> systemlogList(PageInfoBean pageInfo) throws Exception {
 		
+		mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+		
 		logger.info("systemlogList method.");
 		logger.info(pageInfo);
-		SystemLog log = null;
+		LogSearch logSearch = null;
 		
 		Pagination<SystemLog> page = new Pagination<SystemLog>();
 		page.setPageSize(pageInfo.getLimit());
@@ -77,10 +83,12 @@ public class LogManagerController extends BaseController {
 		order.addOrderBy("id", "DESC");
 		
 		if (!StringUtils.isEmpty(pageInfo.getSearchJson())) {
-			log = this.gson.fromJson(pageInfo.getSearchJson(), SystemLog.class);
+			logSearch = mapper.readValue(pageInfo.getSearchJson(), LogSearch.class);
 		}
 		
-		this.systemLogService.queryByCondition(log, order, page, JoinMode.AND);
+		logger.info(logSearch);
+		
+		this.systemLogService.queryByCondtinWithOperationTime(logSearch, order, page, JoinMode.AND);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("pageCount", page.getTotalRecord());
 		result.put("result", page.getDatas());

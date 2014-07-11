@@ -5,30 +5,6 @@ Ext.define('Bjfu.log.view.QueryLog',{
 	initComponent: function() {
     	var me = this;
     	
-    	var businessTypeStore = Ext.create('Ext.data.Store', {
-    		autoLoad:true,
-    	    fields: ['value', 'description'],
-		  	 proxy : {
-		        type : 'ajax',
-		        url : Global_Path+'/smp/log!getBusinessTypeList',
-		        reader : {
-					type : 'json',
-					root : 'result'
-		        }
-			}
-    	});
-    	var operateTypeStore = Ext.create('Ext.data.Store', {
-    		autoLoad:true,
-    	    fields: ['value', 'description'],
-		  	 proxy : {
-		        type : 'ajax',
-		        url : Global_Path+'/smp/log!getOperateTypeList',
-		        reader : {
-					type : 'json',
-					root : 'result'
-		        }
-			}
-    	});
     	Ext.apply(me, {
     		layout: {
 		        type: 'table',
@@ -54,45 +30,45 @@ Ext.define('Bjfu.log.view.QueryLog',{
     	    	xtype : 'combo',
     	        fieldLabel : '业务类型',
     	        name : 'businessType',
-    	        store : businessTypeStore,
+    	        store : Ext.create('Bjfu.fesdmp.BusinessType'),
     	        editable : false,
-    	        mode : 'remote',
-    	        displayField : 'description',
-    	        valueField : 'value',
+    	       // mode : 'remote',
+    	        displayField : 'name',
+    	        valueField : 'val',
     	        emptyText : '请选择...'
     	    },{
-    	    	id : 'operateType',
+    	    	id : 'operationType',
     	    	xtype : 'combo',
     	        fieldLabel: '操作类型',
-    	        name: 'operateType',
-    	        store : operateTypeStore,
+    	        name: 'operationType',
+    	        store : Ext.create('Bjfu.fesdmp.OperatitonType'),
     	        editable : false,
-    	        mode : 'remote',
-    	        displayField : 'description',
-    	        valueField : 'value',
-    	         emptyText : '请选择...'
+    	      //  mode : 'remote',
+    	        displayField : 'name',
+    	        valueField : 'val',
+    	        emptyText : '请选择...'
     	    },{
     	    	xtype : 'datefield',
 				fieldLabel : '开始时间',
 				altFormats: 'Y-m-d',
 				format : 'Y-m-d',
-				id : 'createStartTime',
-				name : 'createStartTime',
+				id : 'startTime',
+				name : 'startTime',
 				maxValue : new Date(),
 				editable : false,
 				vtype : 'daterange',
-				endDateField :"createEndTime"
+				endDateField :"endTime"
     	    },{
     	    	xtype : 'datefield',
 				fieldLabel : '结束时间',
 				altFormats: 'Y-m-d',
 				format : 'Y-m-d',
-				id : 'createEndTime',
-				name : 'createEndTime',
+				id : 'endTime',
+				name : 'endTime',
 				maxValue : new Date(),
 				vtype : 'daterange',
 				editable : false,
-				startDateField : "createStartTime"
+				startDateField : "startTime"
     	    },{
     	    	id : 'operateContent',
     	    	xtype : 'textfield',
@@ -114,11 +90,10 @@ Ext.define('Bjfu.log.view.QueryLog',{
 		        disabled: true,
 		        handler: function() {
 		          	var form = this.up('form').getForm();
-		          	var viewId = this.up('form').listViewId;
-		            var warningStr = JSON.stringify(this.up('form').getForm().getValues());
-		            Ext.getCmp(viewId).getStore().load({
+		            var searchJson = JSON.stringify(this.up('form').getForm().getValues());
+		            Ext.getCmp("logListViewId").getStore().load({
 		               		params: {
-		           				warningStr: warningStr
+		           				searchJson: searchJson
 		           			}
 		            });
 		            this.up('window').close();
