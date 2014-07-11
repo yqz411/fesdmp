@@ -54,6 +54,15 @@
 		<property name="maxUploadSize" value="1024000000"></property>
 	</bean>
 	
+	<!-- 定义异常处理页面  对应view 下面的outException.jsp-->
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+            <props>
+                <prop key="java.sql.SQLException">outException</prop>
+                <prop key="java.io.IOException">outException</prop>
+            </props>
+        </property>
+	</bean>
 	<!-- Spring MVC HttpMessageConverter<T> 自定义之后则覆盖默认的值-->
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters" ref="messageConverters" />
