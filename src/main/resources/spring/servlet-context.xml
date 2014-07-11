@@ -15,6 +15,9 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<!-- 下面标签内建的就是 FormattingConversionServiceFactoryBean 所以 Spring MVC 对处理方法的入参绑定就支持注解驱动的功能-->
 	<context:component-scan base-package="cn.bjfu.fesdmp.web" />
+	<!-- 该标签会默认配置 DefaultAnnotationHandlerMapping 和一个 AnnotionMethodHandlerAdapter
+		同时还会注册一个默认的ConversionService 即FormattingConversionServiceFactoryBean
+	 -->
 	<mvc:annotation-driven>
 	<!-- 处理responseBody 里面日期类型 -->
 		<mvc:message-converters>

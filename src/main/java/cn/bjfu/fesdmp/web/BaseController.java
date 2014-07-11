@@ -92,8 +92,10 @@ public class BaseController {
 		return messageSource.getMessage(code, args, locale);
 	}
 	
-	
-	
+	/**
+	 *  Spring MVC 允许采用自定的编辑器使用注解 @InitBinder 
+	 *  也可以通过WebBindingInitializer接口 装配全局范围使用的编辑器
+	 */
 	@InitBinder
 	protected void initBinder(HttpServletRequest request,
 			ServletRequestDataBinder binder) throws Exception {
